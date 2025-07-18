@@ -191,10 +191,9 @@ func _physics_process(delta: float) -> void:
 			#var col = get_slide_collision(i)
 			#if col.get_collider() is RigidBody2D:
 				#col.get_collider().apply_force(col.get_normal() * - 1000)
-	
-	move_and_slide()
 	if was_on_floor and not is_on_floor():
 		$coyote.start()
+	move_and_slide()
 
 func jump(double = false):
 	if not jumping:
