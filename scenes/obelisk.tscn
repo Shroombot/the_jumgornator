@@ -1,0 +1,124 @@
+[gd_scene load_steps=11 format=3 uid="uid://bnnkw7f8ttt7e"]
+
+[ext_resource type="Texture2D" uid="uid://dqp6fcand6834" path="res://assets/obelisk.png" id="1_36t8n"]
+[ext_resource type="Script" uid="uid://c4cgpyroevubp" path="res://scripts/obelisk.gd" id="1_djhg5"]
+[ext_resource type="AudioStream" uid="uid://bkxf2hu2bj0jf" path="res://sounds/obelisk.mp3" id="3_eomyx"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3b34"]
+bounce = 0.3
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3b34"]
+radius = 13.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36t8n"]
+size = Vector2(12, 20)
+
+[sub_resource type="Animation" id="Animation_djhg5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:done")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_eomyx"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_36t8n"]
+resource_name = "rise"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:done")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.766667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eomyx"]
+_data = {
+&"RESET": SubResource("Animation_djhg5"),
+&"idle": SubResource("Animation_eomyx"),
+&"rise": SubResource("Animation_36t8n")
+}
+
+[node name="obelisk" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 2
+physics_material_override = SubResource("PhysicsMaterial_p3b34")
+script = ExtResource("1_djhg5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 5)
+shape = SubResource("CircleShape2D_p3b34")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_36t8n")
+hframes = 4
+vframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_36t8n")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_eomyx")
+}
+
+[node name="rise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_eomyx")
+volume_db = 4.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

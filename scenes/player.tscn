@@ -1,0 +1,223 @@
+[gd_scene load_steps=17 format=3 uid="uid://dibnilpp4vky4"]
+
+[ext_resource type="Texture2D" uid="uid://g2fr3ghs8md6" path="res://assets/jumgornator.png" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://6wnfo7s3d4fj" path="res://scripts/player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://rwnia50h1rh" path="res://assets/shield.png" id="3_qhqgy"]
+[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://scenes/levels/PixelAE-Bold.ttf" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://c2q7rmhlbyrnp" path="res://sounds/jump.mp3" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://iguj7kponru5" path="res://sounds/dash.mp3" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://dsqweiy6ckxu2" path="res://sounds/land.mp3" id="7_fjrip"]
+[ext_resource type="AudioStream" uid="uid://c5gbyuc6qa12e" path="res://sounds/hit_wall.mp3" id="8_smehm"]
+[ext_resource type="AudioStream" uid="uid://ds2p3tu6fh00p" path="res://sounds/running.mp3" id="9_ur7pv"]
+
+[sub_resource type="Animation" id="Animation_onrkg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:eating")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:dead")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "die"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [8, 9, 10]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:dead")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.433333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_g2els"]
+resource_name = "eat"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:eating")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.533333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_4flbx"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [4, 5, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_onrkg"]
+_data = {
+&"RESET": SubResource("Animation_onrkg"),
+&"die": SubResource("Animation_dqkch"),
+&"eat": SubResource("Animation_g2els"),
+&"idle": SubResource("Animation_qhqgy"),
+&"walk": SubResource("Animation_4flbx")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
+size = Vector2(7, 7)
+
+[node name="player" type="CharacterBody2D"]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_4flbx")
+hframes = 4
+vframes = 4
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_onrkg")
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_4flbx")
+debug_color = Color(0.893022, 0.237537, 0.552121, 0.42)
+
+[node name="jump_buffer" type="Timer" parent="."]
+one_shot = true
+
+[node name="extra_move" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="shield" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="shield_sprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, 4)
+texture = ExtResource("3_qhqgy")
+
+[node name="Label" type="Label" parent="shield_sprite"]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = -12.0
+theme_override_fonts/font = ExtResource("4_dqkch")
+theme_override_font_sizes/font_size = 5
+text = "3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="jump" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_qlg0r")
+volume_db = -12.0
+
+[node name="dash" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_tuyoq")
+volume_db = -6.0
+max_polyphony = 20
+
+[node name="fall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_fjrip")
+volume_db = -8.0
+
+[node name="hit_wall" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_smehm")
+volume_db = 6.0
+
+[node name="runnning" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_ur7pv")
+volume_db = 4.0
+autoplay = true
+parameters/looping = true
+
+[connection signal="timeout" from="extra_move" to="." method="_on_extra_move_timeout"]
+[connection signal="timeout" from="shield" to="." method="_on_shield_timeout"]

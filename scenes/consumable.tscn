@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://co0okw5ufhl3y"]
+
+[ext_resource type="Script" uid="uid://by2a5xou3ea7e" path="res://scripts/consumable.gd" id="1_n3o06"]
+[ext_resource type="Texture2D" uid="uid://bdgaiqqavdua7" path="res://assets/symbols/jump.png" id="1_p3b34"]
+[ext_resource type="Texture2D" uid="uid://jyg5uslo3v5t" path="res://assets/symbols/empty.png" id="2_i6ke6"]
+[ext_resource type="AudioStream" uid="uid://84rhkebyjya8" path="res://sounds/collect.mp3" id="4_tn8se"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p3b34"]
+
+[node name="consumable" type="Area2D"]
+script = ExtResource("1_n3o06")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_p3b34")
+
+[node name="outline" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_i6ke6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_p3b34")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[node name="collect" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_tn8se")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

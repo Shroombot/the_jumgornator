@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://mo6yll5jpyxn"]
+
+[ext_resource type="Script" uid="uid://b11mv7t57monx" path="res://scripts/spike.gd" id="1_7d6fi"]
+[ext_resource type="Texture2D" uid="uid://dbtbbu0m3hlf8" path="res://assets/spike.png" id="2_4p6sg"]
+[ext_resource type="AudioStream" uid="uid://ci5h4q1tugcu3" path="res://sounds/spike.mp3" id="3_5su4f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7a7y0"]
+size = Vector2(4, 4)
+
+[node name="spike" type="Area2D"]
+script = ExtResource("1_7d6fi")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4p6sg")
+flip_v = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_7a7y0")
+
+[node name="spike" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5su4f")
+volume_db = -8.0
+max_polyphony = 20
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

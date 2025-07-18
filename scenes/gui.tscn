@@ -1,0 +1,382 @@
+[gd_scene load_steps=28 format=3 uid="uid://bbyeca6ycjd5r"]
+
+[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://scenes/levels/PixelAE-Bold.ttf" id="1_efmwq"]
+[ext_resource type="Script" uid="uid://c8u5e6j0nik6j" path="res://scripts/gui.gd" id="1_mfius"]
+[ext_resource type="Shader" uid="uid://d2nyrfdfc7t26" path="res://shaders/transition.gdshader" id="3_ynd5l"]
+[ext_resource type="AudioStream" uid="uid://7tgjogvkgi3a" path="res://sounds/click.mp3" id="4_7yii4"]
+[ext_resource type="Texture2D" uid="uid://de2dgmubfh8bf" path="res://assets/pause.png" id="4_jqlde"]
+[ext_resource type="AudioStream" uid="uid://b7c3adfllokp4" path="res://sounds/pause.mp3" id="5_4yt8u"]
+[ext_resource type="Texture2D" uid="uid://qhdtvo8cybhp" path="res://assets/pause_hover.png" id="5_08a8y"]
+[ext_resource type="Texture2D" uid="uid://woqtir3ngc7w" path="res://assets/pause_menu.png" id="6_08a8y"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7yii4"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yt8u"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p54wi"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xki8e"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3be1"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqxrh"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qupqx"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(288, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw8q3"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(336, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bglms"]
+atlas = ExtResource("6_08a8y")
+region = Rect2(384, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqlde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7yii4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4yt8u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p54wi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xki8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3be1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqxrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qupqx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw8q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bglms")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p54wi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yt8u"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08a8y"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yii4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b8iy7"]
+shader = ExtResource("3_ynd5l")
+shader_parameter/use_sprite_alpha = true
+shader_parameter/use_transition_texture = false
+shader_parameter/transition_type = 0
+shader_parameter/position = Vector2(0.5, 0.5)
+shader_parameter/invert = true
+shader_parameter/grid_size = Vector2(16, 9)
+shader_parameter/rotation_angle = 0.0
+shader_parameter/stagger = Vector2(0, 0)
+shader_parameter/stagger_frequency = Vector2i(2, 2)
+shader_parameter/flip_frequency = Vector2i(2, 1)
+shader_parameter/basic_feather = 0.0
+shader_parameter/use_mask_size = false
+shader_parameter/mask_size = Vector2(100, 100)
+shader_parameter/edges = 3
+shader_parameter/shape_feather = 0.1
+shader_parameter/sectors = 1
+shader_parameter/clock_feather = 0.0
+shader_parameter/progress = 4.8
+shader_parameter/progress_bias = Vector2(2, 2)
+
+[sub_resource type="Animation" id="Animation_jqlde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4.8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/invert")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:switch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ynd5l"]
+resource_name = "in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/invert")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_b8iy7"]
+resource_name = "out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 20.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:material:shader_parameter/invert")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:switch")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.56667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqlde"]
+_data = {
+&"RESET": SubResource("Animation_jqlde"),
+&"in": SubResource("Animation_ynd5l"),
+&"out": SubResource("Animation_b8iy7")
+}
+
+[node name="gui" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_mfius")
+switch = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -155.0
+offset_right = 155.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_colors/default_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_offset_x = 5
+theme_override_fonts/normal_font = ExtResource("1_efmwq")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+text = "ad
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="pause_menu" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+modulate = Color(1, 1, 1, 0)
+position = Vector2(160, 90)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jqlde")
+autoplay = "default"
+frame_progress = 0.937349
+
+[node name="Panel" type="Panel" parent="pause_menu"]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -32.0
+offset_right = 7.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="click" type="AudioStreamPlayer2D" parent="pause_menu"]
+stream = ExtResource("4_7yii4")
+
+[node name="pause" type="AudioStreamPlayer2D" parent="pause_menu"]
+stream = ExtResource("5_4yt8u")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -51.0
+offset_top = -22.5
+offset_right = 51.0
+offset_bottom = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 5
+
+[node name="continue" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.796078, 0.717647, 0.196078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_pressed_color = Color(0.796078, 0.717647, 0.196078, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_efmwq")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxFlat_p54wi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yt8u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_08a8y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yii4")
+text = "Continue"
+autowrap_mode = 3
+
+[node name="reset_level" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.796078, 0.717647, 0.196078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_pressed_color = Color(0.796078, 0.717647, 0.196078, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_efmwq")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxFlat_p54wi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yt8u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_08a8y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yii4")
+text = "Reset Level"
+autowrap_mode = 3
+
+[node name="skip" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.796078, 0.717647, 0.196078, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.921569, 0.921569, 0.921569, 1)
+theme_override_colors/font_pressed_color = Color(0.796078, 0.717647, 0.196078, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_efmwq")
+theme_override_font_sizes/font_size = 10
+theme_override_styles/focus = SubResource("StyleBoxFlat_p54wi")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4yt8u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_08a8y")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7yii4")
+text = "Skip Level"
+autowrap_mode = 3
+
+[node name="pause" type="TextureButton" parent="."]
+offset_left = 289.0
+offset_top = 6.0
+offset_right = 305.0
+offset_bottom = 22.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("4_jqlde")
+texture_hover = ExtResource("5_08a8y")
+stretch_mode = 0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 1
+material = SubResource("ShaderMaterial_b8iy7")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.164706, 0, 0.164706, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ColorRect"]
+libraries = {
+&"": SubResource("AnimationLibrary_jqlde")
+}
+autoplay = "in"
+
+[connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="VBoxContainer/reset_level" to="." method="_on_reset_level_pressed"]
+[connection signal="pressed" from="VBoxContainer/skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]
