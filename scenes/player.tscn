@@ -180,6 +180,10 @@ one_shot = true
 wait_time = 5.0
 one_shot = true
 
+[node name="coyote" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+
 [node name="shield_sprite" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, 4)

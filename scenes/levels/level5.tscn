@@ -41,12 +41,3 @@ position = Vector2(445, 32)
 symbol_name = "draft"
 
 [node name="gui" parent="." instance=ExtResource("8_kykwg")]
-
-[connection signal="body_entered" from="tilemap/spike" to="tilemap/spike" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42962" to="tilemap/@Area2D@42962" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42963" to="tilemap/@Area2D@42963" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42964" to="tilemap/@Area2D@42964" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42965" to="tilemap/@Area2D@42965" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42966" to="tilemap/@Area2D@42966" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42967" to="tilemap/@Area2D@42967" method="_on_body_entered"]
-[connection signal="body_entered" from="tilemap/@Area2D@42968" to="tilemap/@Area2D@42968" method="_on_body_entered"]

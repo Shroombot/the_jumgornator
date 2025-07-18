@@ -140,18 +140,16 @@ func _physics_process(delta: float) -> void:
 			velocity.y += grav(velocity) * delta
 		
 	if Input.is_action_just_released("jump") and velocity.y < 0:
-		if flip:
-			velocity.y = (JUMP_VELOCITY/4 * -1)
-		else:
-			velocity.y = JUMP_VELOCITY/4
+		velocity.y = JUMP_VELOCITY/4
 	# Handle jump.
+	var was_on_floor = is_on_floor()
 	if is_on_floor():
 		double_jump = false
 	if Input.is_action_just_pressed("jump") and not dying:
 		#if is_on_wall():
 			#jump(true)
-		if is_on_floor() or is_on_ceiling():
-			if (flip and is_on_ceiling()) or (not flip and is_on_floor()):
+		if is_on_floor() or is_on_ceiling() or $coyote.time_left > 0:
+			if (flip and is_on_ceiling()) or (not flip and is_on_floor()) or $coyote.time_left > 0:
 				if Everywhere.get_unlock("jump") > 0:
 					jump()
 		else:
@@ -195,6 +193,8 @@ func _physics_process(delta: float) -> void:
 				#col.get_collider().apply_force(col.get_normal() * - 1000)
 	
 	move_and_slide()
+	if was_on_floor and not is_on_floor():
+		$coyote.start()
 
 func jump(double = false):
 	if not jumping:
