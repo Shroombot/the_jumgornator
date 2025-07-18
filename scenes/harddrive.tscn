@@ -108,6 +108,8 @@ sprite_frames = SubResource("SpriteFrames_fwkdv")
 autoplay = "default"
 frame_progress = 0.400323
 script = ExtResource("2_famik")
+title = "Example"
+text = "It's so wild that it works first try..."
 
 [node name="Area2D" type="Area2D" parent="."]
 

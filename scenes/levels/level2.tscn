@@ -47,4 +47,4 @@ position = Vector2(19, -49)
 
 [node name="harddrive" parent="." instance=ExtResource("7_dj4wq")]
 material = SubResource("ShaderMaterial_b0vvs")
-position = Vector2(192, -2)
+position = Vector2(189, -12)

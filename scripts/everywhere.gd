@@ -3,7 +3,7 @@ extends Node
 var unlock_text = []
 var unlocked = {}
 var show_letter = false
-var letter_contents = ""
+var letter_contents = ["",""]
 var switch_scene = false
 var scene : String
 var level = 1

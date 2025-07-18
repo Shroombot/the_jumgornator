@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bbyeca6ycjd5r"]
+[gd_scene load_steps=32 format=3 uid="uid://bbyeca6ycjd5r"]
 
 [ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://PixelAE-Bold.ttf" id="1_efmwq"]
 [ext_resource type="Script" uid="uid://c8u5e6j0nik6j" path="res://scripts/gui.gd" id="1_mfius"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://b7c3adfllokp4" path="res://sounds/pause.mp3" id="5_4yt8u"]
 [ext_resource type="Texture2D" uid="uid://qhdtvo8cybhp" path="res://assets/pause_hover.png" id="5_08a8y"]
 [ext_resource type="Texture2D" uid="uid://woqtir3ngc7w" path="res://assets/pause_menu.png" id="6_08a8y"]
+[ext_resource type="Texture2D" uid="uid://l4wk4ehc874v" path="res://assets/close.png" id="9_v3be1"]
+[ext_resource type="Texture2D" uid="uid://corfqugtekal0" path="res://assets/close_hover.png" id="10_xqxrh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7yii4"]
 atlas = ExtResource("6_08a8y")
@@ -92,6 +94,9 @@ bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yii4"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xki8e"]
+bg_color = Color(0, 0, 0, 0.639216)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b8iy7"]
 shader = ExtResource("3_ynd5l")
@@ -256,37 +261,6 @@ text = "ad
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="letter_stuff" type="Node2D" parent="."]
-
-[node name="Panel" type="Panel" parent="letter_stuff"]
-show_behind_parent = true
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -32.0
-offset_right = 367.0
-offset_bottom = 219.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Sprite2D" type="Sprite2D" parent="letter_stuff"]
-position = Vector2(160, 90)
-scale = Vector2(3.5, 3.5)
-texture = ExtResource("3_p54wi")
-
-[node name="Label" type="Label" parent="letter_stuff"]
-offset_left = 101.0
-offset_top = 13.0
-offset_right = 219.0
-offset_bottom = 33.0
-theme_override_colors/font_color = Color(0.164706, 0, 0.164706, 1)
-theme_override_fonts/font = ExtResource("1_efmwq")
-theme_override_font_sizes/font_size = 10
-text = "Letter"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="pause_menu" type="AnimatedSprite2D" parent="."]
 process_mode = 3
 modulate = Color(1, 1, 1, 0)
@@ -391,6 +365,64 @@ texture_normal = ExtResource("4_jqlde")
 texture_hover = ExtResource("5_08a8y")
 stretch_mode = 0
 
+[node name="letter_stuff" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="Panel" type="Panel" parent="letter_stuff"]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -32.0
+offset_right = 367.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xki8e")
+
+[node name="Sprite2D" type="Sprite2D" parent="letter_stuff"]
+position = Vector2(160, 90)
+scale = Vector2(3.5, 3.5)
+texture = ExtResource("3_p54wi")
+
+[node name="title" type="Label" parent="letter_stuff"]
+offset_left = 101.0
+offset_top = 13.0
+offset_right = 219.0
+offset_bottom = 33.0
+theme_override_colors/font_color = Color(0.164706, 0, 0.164706, 1)
+theme_override_fonts/font = ExtResource("1_efmwq")
+theme_override_font_sizes/font_size = 10
+text = "Letter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="contents" type="RichTextLabel" parent="letter_stuff"]
+offset_left = 109.0
+offset_top = 39.0
+offset_right = 211.0
+offset_bottom = 166.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.164706, 0, 0.164706, 1)
+theme_override_fonts/normal_font = ExtResource("1_efmwq")
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "adadad"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="close" type="TextureButton" parent="letter_stuff"]
+offset_left = 289.0
+offset_top = 6.0
+offset_right = 305.0
+offset_bottom = 22.0
+scale = Vector2(1.5, 1.5)
+texture_normal = ExtResource("9_v3be1")
+texture_hover = ExtResource("10_xqxrh")
+stretch_mode = 0
+
 [node name="ColorRect" type="ColorRect" parent="."]
 texture_filter = 1
 material = SubResource("ShaderMaterial_b8iy7")
@@ -412,3 +444,4 @@ autoplay = "in"
 [connection signal="pressed" from="VBoxContainer/reset_level" to="." method="_on_reset_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/skip" to="." method="_on_skip_pressed"]
 [connection signal="pressed" from="pause" to="." method="_on_pause_pressed"]
+[connection signal="pressed" from="letter_stuff/close" to="." method="_on_close_pressed"]

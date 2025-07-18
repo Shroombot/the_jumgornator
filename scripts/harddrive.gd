@@ -7,12 +7,16 @@ func _ready() -> void:
 	var tween = create_tween().set_loops().set_trans(Tween.TRANS_QUAD)
 	tween.tween_property($Sprite2D,"scale",Vector2(0.85,0.85),1)
 	tween.tween_property($Sprite2D,"scale",Vector2(1,1),1)
+	var tweens = create_tween().set_loops().set_trans(Tween.TRANS_QUAD)
+	tweens.tween_property(self,"position:y",0.3,0.75)
+	tweens.tween_property(self,"position:y",-0.3,0.75)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and inside:
 		if Everywhere.show_letter:
 			Everywhere.show_letter = false
 		else:
+			Everywhere.letter_contents = [title,text]
 			Everywhere.show_letter = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
