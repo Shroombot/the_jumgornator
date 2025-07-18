@@ -2,13 +2,15 @@ extends Node
 
 var unlock_text = []
 var unlocked = {}
+var show_letter = false
+var letter_contents = ""
 var switch_scene = false
 var scene : String
 var level = 1
 var symbols = {
 	"jump" : ["res://assets/symbols/jump.png","space bar","none"],
 	"draft" : ["res://assets/symbols/up_boost.png","none","res://sounds/woosh.mp3"],
-	"bolt" : ["res://assets/symbols/bolt.png","E","res://sounds/bolt.mp3"],
+	"bolt" : ["res://assets/symbols/bolt.png","Q","res://sounds/bolt.mp3"],
 	"shield" : ["res://assets/symbols/shield.png","none","res://sounds/shield.mp3"],
 	"flip" : ["res://assets/symbols/flip.png","S or Down Arrow","res://sounds/flip.mp3"]
 }
@@ -21,7 +23,7 @@ var levels = {
 	6: "res://scenes/levels/level6.tscn",
 	7: "res://scenes/levels/level7.tscn",
 	8: "res://scenes/levels/level8.tscn",
-	9: "res://scenes/levels/level9.tscn"
+	9: "res://scenes/levels/level9.tscn",
 }
 
 #func _process(delta: float) -> void:

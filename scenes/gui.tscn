@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://bbyeca6ycjd5r"]
 
-[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://scenes/levels/PixelAE-Bold.ttf" id="1_efmwq"]
+[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://PixelAE-Bold.ttf" id="1_efmwq"]
 [ext_resource type="Script" uid="uid://c8u5e6j0nik6j" path="res://scripts/gui.gd" id="1_mfius"]
 [ext_resource type="Shader" uid="uid://d2nyrfdfc7t26" path="res://shaders/transition.gdshader" id="3_ynd5l"]
 [ext_resource type="AudioStream" uid="uid://7tgjogvkgi3a" path="res://sounds/click.mp3" id="4_7yii4"]
@@ -254,6 +254,30 @@ text = "ad
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="letter_stuff" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="letter_stuff"]
+offset_left = 101.0
+offset_top = 13.0
+offset_right = 219.0
+offset_bottom = 36.0
+text = "Letter"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="letter_stuff"]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -32.0
+offset_right = 367.0
+offset_bottom = 219.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="letter_stuff"]
 
 [node name="pause_menu" type="AnimatedSprite2D" parent="."]
 process_mode = 3

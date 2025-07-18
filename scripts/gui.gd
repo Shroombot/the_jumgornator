@@ -7,6 +7,12 @@ func _ready() -> void:
 	$ColorRect/AnimationPlayer.play("in")
 
 func _process(delta: float) -> void:
+	if Everywhere.show_letter:
+		var tween = create_tween()
+		tween.tween_property($letter_stuff,"modulate:a",1,0.1)
+	else:
+		var tween = create_tween()
+		tween.tween_property($letter_stuff,"modulate:a",0,0.1)
 	if Input.is_action_just_pressed("reload"):
 		Everywhere.scene = get_tree().current_scene.scene_file_path
 		Everywhere.switch_scene = true

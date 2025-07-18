@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cqhlfm08fkxs8" path="res://scenes/parralax.tscn" id="3_1seuy"]
 [ext_resource type="PackedScene" uid="uid://co0okw5ufhl3y" path="res://scenes/consumable.tscn" id="4_2r1tl"]
 [ext_resource type="Texture2D" uid="uid://bdgaiqqavdua7" path="res://assets/symbols/jump.png" id="5_2r1tl"]
-[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://scenes/levels/PixelAE-Bold.ttf" id="5_dywbp"]
+[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://PixelAE-Bold.ttf" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://bbyeca6ycjd5r" path="res://scenes/gui.tscn" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://bnnkw7f8ttt7e" path="res://scenes/obelisk.tscn" id="8_8a7m2"]
 [ext_resource type="PackedScene" uid="uid://cfmqsu2nsog52" path="res://scenes/levels/level2.tscn" id="9_plydf"]
