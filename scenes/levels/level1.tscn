@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://bimlonnn68xm5"]
+[gd_scene load_steps=8 format=4 uid="uid://bimlonnn68xm5"]
 
 [ext_resource type="PackedScene" uid="uid://dibnilpp4vky4" path="res://scenes/player.tscn" id="1_bfxgj"]
 [ext_resource type="PackedScene" uid="uid://bhtijnajt17sw" path="res://scenes/tilemap.tscn" id="2_dywbp"]
@@ -8,7 +8,6 @@
 [ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://PixelAE-Bold.ttf" id="5_dywbp"]
 [ext_resource type="PackedScene" uid="uid://bbyeca6ycjd5r" path="res://scenes/gui.tscn" id="6_1seuy"]
 [ext_resource type="PackedScene" uid="uid://bnnkw7f8ttt7e" path="res://scenes/obelisk.tscn" id="8_8a7m2"]
-[ext_resource type="PackedScene" uid="uid://cfmqsu2nsog52" path="res://scenes/levels/level2.tscn" id="9_plydf"]
 
 [node name="level1" type="Node2D"]
 
@@ -28,9 +27,6 @@ tile_map_data = PackedByteArray("AAAGAAAAAAABAAAAAgAGAP//AAABAAAAAgAGAP7/AAACAAA
 
 [node name="jump" parent="symbols" instance=ExtResource("4_2r1tl")]
 position = Vector2(108, 13)
-texture = ExtResource("5_2r1tl")
-symbol_name = "jump"
-key = "Space Bar"
 
 [node name="Label" type="Label" parent="."]
 offset_left = -56.0
@@ -49,4 +45,3 @@ autowrap_mode = 3
 
 [node name="obelisk" parent="." instance=ExtResource("8_8a7m2")]
 position = Vector2(209, -20)
-next_scene = ExtResource("9_plydf")
