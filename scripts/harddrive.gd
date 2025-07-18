@@ -28,6 +28,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if body is Player:
+		Everywhere.show_letter = false
 		inside = false
 		var tween = create_tween().set_trans(Tween.TRANS_SINE)
 		tween.tween_property($Sprite2D,"modulate:a",0,0.1)

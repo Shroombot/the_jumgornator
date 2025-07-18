@@ -12,7 +12,8 @@ var symbols = {
 	"draft" : ["res://assets/symbols/up_boost.png","none","res://sounds/woosh.mp3"],
 	"bolt" : ["res://assets/symbols/bolt.png","Q","res://sounds/bolt.mp3"],
 	"shield" : ["res://assets/symbols/shield.png","none","res://sounds/shield.mp3"],
-	"flip" : ["res://assets/symbols/flip.png","S or Down Arrow","res://sounds/flip.mp3"]
+	"flip" : ["res://assets/symbols/flip.png","S or Down Arrow","res://sounds/flip.mp3"],
+	"reverse gravity" : ["res://assets/symbols/reverse_gravity.png","none","res://sounds/flip.mp3"]
 }
 var levels = {
 	1: "res://scenes/levels/level1.tscn",

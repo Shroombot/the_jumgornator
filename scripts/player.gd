@@ -43,6 +43,16 @@ func direct_effects():
 			$shield_sprite.visible = true
 			$shield.start()
 		Everywhere.unlocked.erase("shield")
+	if Everywhere.unlocked.has("reverse gravity"):
+		if not dying:
+			var tween = create_tween().set_trans(Tween.TRANS_SINE)
+			if flip:
+				tween.tween_property(self,"rotation_degrees",0,0.1)
+				flip = false
+			else:
+				tween.tween_property(self,"rotation_degrees",180,0.1)
+				flip = true
+		Everywhere.unlocked.erase("reverse gravity")
 		
 
 func _physics_process(delta: float) -> void:
