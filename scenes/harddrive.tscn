@@ -108,15 +108,13 @@ sprite_frames = SubResource("SpriteFrames_fwkdv")
 autoplay = "default"
 frame_progress = 0.400323
 script = ExtResource("2_famik")
-title = "Example"
-text = "It's so wild that it works first try..."
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_74g7u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="intercat" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(0, -14)
 texture = ExtResource("4_un2et")

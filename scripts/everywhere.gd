@@ -14,7 +14,9 @@ var symbols = {
 	"bolt" : ["res://assets/symbols/bolt.png","Q","res://sounds/bolt.mp3"],
 	"shield" : ["res://assets/symbols/shield.png","none","res://sounds/shield.mp3"],
 	"flip" : ["res://assets/symbols/flip.png","S or Down Arrow","res://sounds/flip.mp3"],
-	"reverse gravity" : ["res://assets/symbols/reverse_gravity.png","none","res://sounds/flip.mp3"]
+	"reverse gravity" : ["res://assets/symbols/reverse_gravity.png","none","res://sounds/flip.mp3"],
+	"ball" : ["res://assets/symbols/ball.png","F","res://sounds/flip.mp3"],
+	"feather" : ["res://assets/symbols/feather.png","W or Up Arrow","res://sounds/flip.mp3"]
 }
 var levels = {
 	1: "res://scenes/levels/level1.tscn",
@@ -26,6 +28,8 @@ var levels = {
 	7: "res://scenes/levels/level7.tscn",
 	8: "res://scenes/levels/level8.tscn",
 	9: "res://scenes/levels/level9.tscn",
+	10: "res://scenes/levels/level10.tscn",
+	11: "res://scenes/levels/level11.tscn",
 }
 
 #func _process(delta: float) -> void:

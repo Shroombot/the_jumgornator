@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dibnilpp4vky4"]
+[gd_scene load_steps=20 format=3 uid="uid://dibnilpp4vky4"]
 
 [ext_resource type="Texture2D" uid="uid://g2fr3ghs8md6" path="res://assets/jumgornator.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://6wnfo7s3d4fj" path="res://scripts/player.gd" id="1_onrkg"]
@@ -47,6 +47,22 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d2wvv"]
+resource_name = "ball"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
 }
 
 [sub_resource type="Animation" id="Animation_dqkch"]
@@ -122,6 +138,38 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_ur7pv"]
+resource_name = "in_ball"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_y4r1p"]
+resource_name = "out_ball"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [3, 2]
+}
+
 [sub_resource type="Animation" id="Animation_4flbx"]
 resource_name = "walk"
 length = 0.4
@@ -142,9 +190,12 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_onrkg"]
 _data = {
 &"RESET": SubResource("Animation_onrkg"),
+&"ball": SubResource("Animation_d2wvv"),
 &"die": SubResource("Animation_dqkch"),
 &"eat": SubResource("Animation_g2els"),
 &"idle": SubResource("Animation_qhqgy"),
+&"in_ball": SubResource("Animation_ur7pv"),
+&"out_ball": SubResource("Animation_y4r1p"),
 &"walk": SubResource("Animation_4flbx")
 }
 
@@ -163,6 +214,7 @@ vframes = 4
 libraries = {
 &"": SubResource("AnimationLibrary_onrkg")
 }
+next/in_ball = &"ball"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 4.5)
