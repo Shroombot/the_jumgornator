@@ -36,12 +36,12 @@ func grav(velocity: Vector2):
 func direct_effects():
 	if Everywhere.unlocked.has("draft"):
 		if not dying:
-			velocity.y -= 850
+			velocity.y -= Everywhere.consumable_value
 		Everywhere.unlocked.erase("draft")
 	if Everywhere.unlocked.has("shield"):
 		if not dying:
 			$shield_sprite.visible = true
-			$shield.start()
+			$shield.start(Everywhere.consumable_value)
 		Everywhere.unlocked.erase("shield")
 	if Everywhere.unlocked.has("reverse gravity"):
 		if not dying:
@@ -53,6 +53,7 @@ func direct_effects():
 				tween.tween_property(self,"rotation_degrees",180,0.1)
 				flip = true
 		Everywhere.unlocked.erase("reverse gravity")
+	Everywhere.consumable_value = 0
 		
 
 func _physics_process(delta: float) -> void:

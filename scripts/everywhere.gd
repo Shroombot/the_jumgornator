@@ -6,6 +6,7 @@ var show_letter = false
 var letter_contents = ["",""]
 var switch_scene = false
 var scene : String
+var consumable_value = 0
 var level = 1
 var symbols = {
 	"jump" : ["res://assets/symbols/jump.png","space bar","none"],
@@ -30,7 +31,8 @@ var levels = {
 #func _process(delta: float) -> void:
 	#print(unlocked)
 
-func add_symbol(nam, key):
+func add_symbol(nam, key, value = 0):
+	consumable_value = value
 	if unlocked.has(nam):
 		unlocked[nam] += 1
 	else:

@@ -1,6 +1,7 @@
 extends Area2D
 @export var symbol_name = "jump"
 @export var cancel_velocity = false
+@export var amount = 0
 var info = ["res://assets/symbols/jump.png","none","res://sounds/collect.mp3"]
 
 func _ready() -> void:
@@ -30,7 +31,15 @@ func _on_body_entered(body: Node2D) -> void:
 		#var tween = create_tween()
 		#tween.tween_property(self,"global_position",body.global_position,0.2)
 		await get_tree().create_timer(0.1).timeout
-		Everywhere.add_symbol(symbol_name, info[1])
+		if amount != 0:
+			Everywhere.add_symbol(symbol_name, info[1], amount)
+		else:
+			if symbol_name == "draft":
+				Everywhere.add_symbol(symbol_name, info[1], 850)
+			elif symbol_name == "shield":
+				Everywhere.add_symbol(symbol_name, info[1], 5)
+			else:
+				Everywhere.add_symbol(symbol_name, info[1])
 		monitoring = false
 		$Sprite2D.visible = false
 		if info[1] == "none":
