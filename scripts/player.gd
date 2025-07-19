@@ -16,7 +16,6 @@ var dying = false
 var extra_move = false
 var double_jump = false
 var JUMP_VELOCITY = -250.0
-var ball = false
 var feather = false
 
 func _ready() -> void:
@@ -30,14 +29,14 @@ func grav(velocity: Vector2):
 	if flip:
 		mod = -1
 	if velocity.y < 0:
-		if ball:
+		if Everywhere.ball:
 			return get_gravity().y * mod / 2
 		else:
 			return get_gravity().y * mod
 	else:
 		#if is_on_wall():
 			#return 100
-		if ball:
+		if Everywhere.ball:
 			if feather:
 				return (20 * mod) 
 			else:
@@ -72,11 +71,6 @@ func direct_effects():
 		
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("ball") and Everywhere.unlocked.has("ball") and not dying:
-		if ball:
-			ball = false
-		else:
-			ball = true
 	if Input.is_action_just_pressed("feather") and Everywhere.unlocked.has("feather") and not dying:
 		feather = true
 	if Input.is_action_just_released("feather"):
@@ -100,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		var tween = create_tween()
 		tween.tween_property($runnning,"volume_db",-80,0.05)
-	if ball and not dying:
+	if Everywhere.ball and not dying:
 		$CollisionShape2D.position = Vector2(0.5,0)
 		$CollisionShape2D.shape.size = Vector2(11,11)
 		not_ball = true
@@ -134,20 +128,19 @@ func _physics_process(delta: float) -> void:
 		extra_move = true
 		$extra_move.start()
 	if not dead:
-		if dying:
-			if $shield.time_left > 0:
-				dying = false
+			if dying:
+				if $shield.time_left > 0:
+					dying = false
+				else:
+					$AnimationPlayer.play("die")
+			elif Everywhere.ball:
+				$AnimationPlayer.play("ball")
+			elif eating:
+				$AnimationPlayer.play("eat")
+			elif abs(velocity.x) > 0:
+				$AnimationPlayer.play("walk")
 			else:
-				$AnimationPlayer.play("die")
-		elif ball:
-			$AnimationPlayer.play("ball")
-				
-		elif eating:
-			$AnimationPlayer.play("eat")
-		elif abs(velocity.x) > 0:
-			$AnimationPlayer.play("walk")
-		else:
-			$AnimationPlayer.play("idle")
+				$AnimationPlayer.play("idle")
 
 	if is_on_floor() and falling:
 		#$land.emitting = true
@@ -236,19 +229,19 @@ func _physics_process(delta: float) -> void:
 	var direction := Input.get_axis("left", "right")
 	if direction and not dying:
 		if accel < 1:
-			if ball:
+			if Everywhere.ball:
 				accel += 0.1
 			else:
 				accel += 0.3
 		if not extra_move:
-			if ball:
+			if Everywhere.ball:
 				velocity.x = direction * SPEED * accel * 2
 			else:
 				velocity.x = direction * SPEED * accel
 		prev_dir = direction
 	else:
 		accel = 0.5
-		if ball:
+		if Everywhere.ball:
 			velocity.x = move_toward(velocity.x, 0, 10)
 		else:
 			velocity.x = move_toward(velocity.x, 0, 21)

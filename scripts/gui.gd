@@ -61,6 +61,7 @@ func _process(delta: float) -> void:
 		tweens.tween_property($RichTextLabel,"modulate:a",0,0.2)
 
 func _on_pause_pressed() -> void:
+	$pause_menu/ball.visible = true
 	$pause_menu/pause.pitch_scale = randf_range(0.95,1.05)
 	$pause_menu/pause.play()
 	var tween = create_tween().set_parallel()
@@ -73,6 +74,7 @@ func _on_pause_pressed() -> void:
 	
 
 func _on_continue_pressed() -> void:
+	$pause_menu/ball.visible = false
 	$pause_menu/click.pitch_scale = randf_range(0.95,1.05)
 	$pause_menu/click.play()
 	get_tree().paused = false
@@ -85,6 +87,7 @@ func _on_continue_pressed() -> void:
 	
 
 func _on_reset_level_pressed() -> void:
+	$pause_menu/ball.visible = false
 	$pause_menu/click.pitch_scale = randf_range(0.95,1.05)
 	$pause_menu/click.play()
 	get_tree().paused = false
@@ -92,6 +95,7 @@ func _on_reset_level_pressed() -> void:
 	Everywhere.switch_scene = true
 
 func _on_skip_pressed() -> void:
+	$pause_menu/ball.visible = false
 	$pause_menu/click.pitch_scale = randf_range(0.95,1.05)
 	$pause_menu/click.play()
 	get_tree().paused = false
@@ -99,3 +103,17 @@ func _on_skip_pressed() -> void:
 
 func _on_close_pressed() -> void:
 	Everywhere.show_letter = false
+
+
+func _on_ball_toggled(toggled_on: bool) -> void:
+	$pause_menu/ball.visible = false
+	$pause_menu/click.pitch_scale = randf_range(0.95,1.05)
+	$pause_menu/click.play()
+	get_tree().paused = false
+	var tween = create_tween().set_parallel()
+	$pause.visible = true
+	tween.tween_property($VBoxContainer,"modulate:a",0,0.2)
+	tween.tween_property($pause_menu,"modulate:a",0,0.2)
+	await get_tree().create_timer(0.3).timeout
+	$VBoxContainer.visible = false
+	Everywhere.ball = toggled_on

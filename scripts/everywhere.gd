@@ -7,6 +7,7 @@ var letter_contents = ["",""]
 var switch_scene = false
 var scene : String
 var consumable_value = 0
+var ball = false
 var level = 1
 var symbols = {
 	"jump" : ["res://assets/symbols/jump.png","space bar","none"],
@@ -30,6 +31,7 @@ var levels = {
 	9: "res://scenes/levels/level9.tscn",
 	10: "res://scenes/levels/level10.tscn",
 	11: "res://scenes/levels/level11.tscn",
+	12: "res://scenes/levels/level12.tscn",
 }
 
 #func _process(delta: float) -> void:

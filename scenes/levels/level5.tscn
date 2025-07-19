@@ -1,11 +1,22 @@
-[gd_scene load_steps=7 format=4 uid="uid://nqdi2r3q4aot"]
+[gd_scene load_steps=10 format=4 uid="uid://nqdi2r3q4aot"]
 
 [ext_resource type="PackedScene" uid="uid://bnnkw7f8ttt7e" path="res://scenes/obelisk.tscn" id="1_dju2a"]
 [ext_resource type="PackedScene" uid="uid://bhtijnajt17sw" path="res://scenes/tilemap.tscn" id="2_v0vb7"]
 [ext_resource type="PackedScene" uid="uid://dibnilpp4vky4" path="res://scenes/player.tscn" id="3_lsgss"]
 [ext_resource type="PackedScene" uid="uid://cqhlfm08fkxs8" path="res://scenes/parralax.tscn" id="4_sd6f7"]
 [ext_resource type="PackedScene" uid="uid://co0okw5ufhl3y" path="res://scenes/consumable.tscn" id="5_vnf24"]
+[ext_resource type="PackedScene" uid="uid://dapcxsa6gcfkt" path="res://scenes/harddrive.tscn" id="7_dju2a"]
 [ext_resource type="PackedScene" uid="uid://bbyeca6ycjd5r" path="res://scenes/gui.tscn" id="8_kykwg"]
+[ext_resource type="Shader" uid="uid://ceiua307y0f3q" path="res://shaders/outline.gdshader" id="8_v0vb7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lsgss"]
+resource_local_to_scene = true
+shader = ExtResource("8_v0vb7")
+shader_parameter/color = Color(0.921569, 0.921569, 0.921569, 1)
+shader_parameter/width = 0.0
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [node name="level1" type="Node2D"]
 
@@ -41,3 +52,9 @@ position = Vector2(445, 32)
 symbol_name = "draft"
 
 [node name="gui" parent="." instance=ExtResource("8_kykwg")]
+
+[node name="harddrive" parent="." instance=ExtResource("7_dju2a")]
+material = SubResource("ShaderMaterial_lsgss")
+position = Vector2(406, -46)
+title = "Am"
+text = "I lost motivation... leading to a seemingly emptier game"

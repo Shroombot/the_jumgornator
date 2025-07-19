@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bbyeca6ycjd5r"]
+[gd_scene load_steps=34 format=3 uid="uid://bbyeca6ycjd5r"]
 
 [ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://PixelAE-Bold.ttf" id="1_efmwq"]
 [ext_resource type="Script" uid="uid://c8u5e6j0nik6j" path="res://scripts/gui.gd" id="1_mfius"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://b7c3adfllokp4" path="res://sounds/pause.mp3" id="5_4yt8u"]
 [ext_resource type="Texture2D" uid="uid://qhdtvo8cybhp" path="res://assets/pause_hover.png" id="5_08a8y"]
 [ext_resource type="Texture2D" uid="uid://woqtir3ngc7w" path="res://assets/pause_menu.png" id="6_08a8y"]
+[ext_resource type="Texture2D" uid="uid://caeclksmvlyb8" path="res://assets/ball.png" id="6_xqxrh"]
+[ext_resource type="Texture2D" uid="uid://dlcgk2awab2e" path="res://assets/ball_hover.png" id="7_qupqx"]
 [ext_resource type="Texture2D" uid="uid://l4wk4ehc874v" path="res://assets/close.png" id="9_v3be1"]
 [ext_resource type="Texture2D" uid="uid://corfqugtekal0" path="res://assets/close_hover.png" id="10_xqxrh"]
 
@@ -281,12 +283,25 @@ offset_right = 7.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="click" type="AudioStreamPlayer2D" parent="pause_menu"]
 stream = ExtResource("4_7yii4")
 
 [node name="pause" type="AudioStreamPlayer2D" parent="pause_menu"]
 stream = ExtResource("5_4yt8u")
+
+[node name="ball" type="TextureButton" parent="pause_menu"]
+process_mode = 3
+offset_left = 42.6667
+offset_top = 19.3333
+offset_right = 58.6667
+offset_bottom = 35.3333
+scale = Vector2(0.5, 0.5)
+toggle_mode = true
+texture_normal = ExtResource("6_xqxrh")
+texture_hover = ExtResource("7_qupqx")
+stretch_mode = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 visible = false
@@ -440,6 +455,7 @@ libraries = {
 }
 autoplay = "in"
 
+[connection signal="toggled" from="pause_menu/ball" to="." method="_on_ball_toggled"]
 [connection signal="pressed" from="VBoxContainer/continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="VBoxContainer/reset_level" to="." method="_on_reset_level_pressed"]
 [connection signal="pressed" from="VBoxContainer/skip" to="." method="_on_skip_pressed"]
