@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://g2fr3ghs8md6" path="res://assets/jumgornator.png" id="1_4flbx"]
 [ext_resource type="Script" uid="uid://6wnfo7s3d4fj" path="res://scripts/player.gd" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://rwnia50h1rh" path="res://assets/shield.png" id="3_qhqgy"]
-[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://scenes/levels/PixelAE-Bold.ttf" id="4_dqkch"]
+[ext_resource type="FontFile" uid="uid://6ehujs8hr76e" path="res://PixelAE-Bold.ttf" id="4_dqkch"]
 [ext_resource type="AudioStream" uid="uid://c2q7rmhlbyrnp" path="res://sounds/jump.mp3" id="5_qlg0r"]
 [ext_resource type="AudioStream" uid="uid://iguj7kponru5" path="res://sounds/dash.mp3" id="6_tuyoq"]
 [ext_resource type="AudioStream" uid="uid://dsqweiy6ckxu2" path="res://sounds/land.mp3" id="7_fjrip"]

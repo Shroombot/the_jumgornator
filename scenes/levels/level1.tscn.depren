@@ -1,0 +1,6 @@
+[gd_scene load_steps=8 format=4 uid="uid://bimlonnn68xm5"]
+
+[ext_resource type="PackedScene" uid="uid://dibnilpp4vky4" path="res://scenes/player.tscn" id="1_bfxgj"]
+[ext_resource type="PackedScene" uid="uid://bhtijnajt17sw" path="res://scenes/tilemap.tscn" id="2_dywbp"]
+[ext_resource type="PackedScene" uid="uid://cqhlfm08fkxs8" path="res://scenes/parralax.tscn" id="3_1seuy"]
+[ext_resource type="PackedScene" uid="uid://co0okw5ufhl3y" path="res://scenes/consumable.tscn" id="4_2r1tl"]

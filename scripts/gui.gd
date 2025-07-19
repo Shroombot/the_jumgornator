@@ -7,6 +7,16 @@ func _ready() -> void:
 	$ColorRect/AnimationPlayer.play("in")
 
 func _process(delta: float) -> void:
+	if Everywhere.show_letter:
+		$letter_stuff/title.text = Everywhere.letter_contents[0]
+		$letter_stuff/contents.text = Everywhere.letter_contents[1]
+		var tween = create_tween()
+		tween.tween_property($letter_stuff,"modulate:a",1,0.1)
+		$letter_stuff/close.visible = true
+	else:
+		var tween = create_tween()
+		tween.tween_property($letter_stuff,"modulate:a",0,0.1)
+		$letter_stuff/close.visible = false
 	if Input.is_action_just_pressed("reload"):
 		Everywhere.scene = get_tree().current_scene.scene_file_path
 		Everywhere.switch_scene = true
@@ -86,3 +96,6 @@ func _on_skip_pressed() -> void:
 	$pause_menu/click.play()
 	get_tree().paused = false
 	Everywhere.change_level(Everywhere.level + 1)
+
+func _on_close_pressed() -> void:
+	Everywhere.show_letter = false

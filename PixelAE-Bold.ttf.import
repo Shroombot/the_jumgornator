@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://6ehujs8hr76e"
-path="res://.godot/imported/PixelAE-Bold.ttf-203f387bfc7060f4139f4d7d9b364976.fontdata"
+path="res://.godot/imported/PixelAE-Bold.ttf-3043c6f3a99c53b27a0cba5cbca86287.fontdata"
 
 [deps]
 
-source_file="res://scenes/levels/PixelAE-Bold.ttf"
-dest_files=["res://.godot/imported/PixelAE-Bold.ttf-203f387bfc7060f4139f4d7d9b364976.fontdata"]
+source_file="res://PixelAE-Bold.ttf"
+dest_files=["res://.godot/imported/PixelAE-Bold.ttf-3043c6f3a99c53b27a0cba5cbca86287.fontdata"]
 
 [params]
 
