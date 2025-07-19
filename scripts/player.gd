@@ -192,7 +192,7 @@ func _physics_process(delta: float) -> void:
 			#if col.get_collider() is RigidBody2D:
 				#col.get_collider().apply_force(col.get_normal() * - 1000)
 	if was_on_floor and not is_on_floor():
-		$coyote.start()
+		$coyote.start() 
 	move_and_slide()
 	
 
